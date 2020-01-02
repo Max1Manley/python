@@ -24,6 +24,7 @@ jumpCount = 10
 left = False
 right = False
 walkCount = 0
+lineThickness = 50
 
 #this is a function in python
 def redrawGameWindow():
@@ -32,7 +33,8 @@ def redrawGameWindow():
     #image background
     #win.blit(bg, (-100, -100))
     pygame.draw.rect(win, (0, 0, 255), (x, y, width, height))
-    #pygame.draw.circle(win, (255, 0, 255), (50, 50), 30)
+    pygame.draw.circle(win, (255, 0, 255), (190, 190), 30)
+    pygame.draw.polygon(win, (100, 200, 200), ((0,0), (130, 0), (130, 130), (75, 200), (55, 75)), lineThickness)
     pygame.display.update()
 
 run = True
