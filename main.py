@@ -24,7 +24,9 @@ jumpCount = 10
 left = False
 right = False
 walkCount = 0
-lineThickness = 50
+charColor = 255, 0, 255
+white = 255, 255, 255
+purple = 255, 0, 255
 
 #this is a function in python
 def redrawGameWindow():
@@ -32,10 +34,18 @@ def redrawGameWindow():
     win.fill((0,0,0))
     #image background
     #win.blit(bg, (-100, -100))
-    pygame.draw.rect(win, (0, 0, 255), (x, y, width, height))
-    pygame.draw.circle(win, (255, 0, 255), (190, 190), 30)
-    pygame.draw.polygon(win, (100, 200, 200), ((0,0), (130, 0), (130, 130), (75, 200), (55, 75)), lineThickness)
+    pygame.draw.rect(win, (charColor), (x, y, width, height))
+    pygame.draw.circle(win, (255, 0, 255), (190, 190), 50, 5)
+    pygame.draw.circle(win, (255, 0, 255), (190, 190), 30, 5)
+    pygame.draw.polygon(win, (100, 200, 200), ((0,0), (130, 0), (130, 130), (75, 200), (55, 75)))
     pygame.display.update()
+
+def handleColor():
+    global charColor
+    if keys[pygame.K_SPACE]:
+        if charColor == purple:
+            charColor = white
+            print('if purple')
 
 run = True
 while run:
@@ -49,29 +59,19 @@ while run:
     keys = pygame.key.get_pressed()
     
     #movement listeners
-    if keys[pygame.K_LEFT] and x > vel:
+    if keys[pygame.K_a] and x > vel:
         x -= vel
-    if keys[pygame.K_RIGHT] and x < screenWidth - width - vel:
+    if keys[pygame.K_d] and x < screenWidth - width - vel:
         x += vel
-    if not(isJump):
-        if keys[pygame.K_UP] and y > vel:
-            y -= vel
-        if keys[pygame.K_DOWN] and y < screenHeight - height - vel:
-            y += vel
-        if keys[pygame.K_SPACE]:
-            isJump = True
-    else:
-        if jumpCount >= -10:
-            neg = 1
-            if jumpCount < 0:
-                neg = -1
-            y -= (jumpCount ** 2) * 0.5 * neg
-            jumpCount -= 1
-        else:
-            isJump = False
-            jumpCount = 10
+    if keys[pygame.K_w] and y > vel:
+        y -= vel
+    if keys[pygame.K_s] and y < screenHeight - height - vel:
+        y += vel
+    handleColor()
             
     redrawGameWindow()
+    
+
     
 pygame.quit()
     
