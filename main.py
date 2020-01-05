@@ -1,7 +1,7 @@
 #IDEAS
-#hexagonal dungeon layout
+#downsize hexagons to make room for display
 #items/pickups/areas that provide new elemental powers and give advantages over certain enemies
-#fairy(pink) > dragon(gold) > light(white) > void(black) > psychic(purple) > fairy(pink) 
+#fairy(pink) > dragon(gold) > light(white) > void(darkgrey) > psychic(purple) > fairy(pink) 
 #turn based? time based? real time?
 #high ground advantage
 
@@ -22,7 +22,7 @@ win = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Element Dungeon")
 
 #used to help set image background
-bg = pygame.image.load('elementdungeontest.png')
+bg = pygame.image.load('elementdungeontestcolored.png')
 
 #used to help set framerate
 clock = pygame.time.Clock()
@@ -31,7 +31,7 @@ clock = pygame.time.Clock()
 class player:
 #character dimentions and velocity
     def __init__(self, x, y, width, height, charElement):
-        self.x= x
+        self.x = x
         self.y = y
         self.width = width
         self.height = height
@@ -56,7 +56,7 @@ class baddie:
 
 #redraws game window so there isn't a million of the same image, order matters
 def redrawGameWindow():
-    win.fill((0,0,0))
+    #win.fill((0,0,0))
     #image background
     win.blit(bg, (0, 0))
     #pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
@@ -93,15 +93,21 @@ def handleElement():
     if mouse[2]:
         print('right click', event)
 
-#creating character
-man = player(500, 500, 20, 30, light)
-bad = baddie(300, 300, 30, 20, void, 3, 5, 15)
+def attack():
+    if key[pygame.K_SPACE]:
+        bad.hp -= 3
+        print(bad.hp)
+
+#creating character from class object
+man = player(565, 410, 64, 74, light)
+bad = baddie(670, 410, 64, 74, void, 3, 5, 15)
 
 run = True
+
 #main game loop
 while run:
     #frame rate 27/s
-    clock.tick(27)
+    clock.tick(30)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -120,7 +126,7 @@ while run:
     if keys[pygame.K_s] and man.y < screenHeight - man.height - man.vel:
         man.y += man.vel
         
-    #player2
+    #player2 / just pigybacking player1 movement at the moment
     if keys[pygame.K_a] and bad.x > bad.vel:
         bad.x -= bad.vel
     if keys[pygame.K_d] and bad.x < screenWidth - bad.width - bad.vel:
