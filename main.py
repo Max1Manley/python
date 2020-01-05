@@ -22,7 +22,7 @@ win = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Element Dungeon")
 
 #used to help set image background
-#bg = pygame.image.load('bg.jpg')
+bg = pygame.image.load('elementdungeontest.png')
 
 #used to help set framerate
 clock = pygame.time.Clock()
@@ -58,9 +58,10 @@ class baddie:
 def redrawGameWindow():
     win.fill((0,0,0))
     #image background
-    #win.blit(bg, (-100, -100))
-    pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
+    win.blit(bg, (0, 0))
+    #pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
     pygame.draw.rect(win, (man.charElement), (man.x, man.y, man.width, man.height))
+    pygame.draw.rect(win, (bad.charElement), (bad.x, bad.y, bad.width, bad.height))
     #example of drawing a circle and a polygon
     #pygame.draw.circle(win, (255, 0, 255), (190, 190), 30, 5)
     pygame.display.update()
@@ -119,7 +120,7 @@ while run:
     if keys[pygame.K_s] and man.y < screenHeight - man.height - man.vel:
         man.y += man.vel
         
-    #bad guy movement
+    #player2
     if keys[pygame.K_a] and bad.x > bad.vel:
         bad.x -= bad.vel
     if keys[pygame.K_d] and bad.x < screenWidth - bad.width - bad.vel:
