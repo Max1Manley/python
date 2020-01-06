@@ -3,12 +3,24 @@
 #items/pickups/areas that provide new elemental powers and give advantages over certain enemies
 #fairy(pink) > dragon(gold) > light(white) > void(darkgrey) > psychic(purple) > fairy(pink) 
 #turn based? time based? real time?
-#high ground advantage
+#high ground advantage?
+
+#turn this into an object somehow to track movement?
+#row0 = [0,1,2,3,4,5,6,7,8]
+#row1 = [0,1,2,3,4,5,6,7]
+#row3 = [0,1,2,3,4,5,6,7,8]
+#row4 = [0,1,2,3,4,5,6,7]
+#row5 = [0,1,2,3,4,5,6,7,8]
+#row6 = [0,1,2,3,4,5,6,7]
+#row7 = [0,1,2,3,4,5,6,7,8]
+
 
 import pygame
 pygame.init()
 
 #some good old global variable for you
+player1turn = True
+player2turn = False
 screenWidth = 1080
 screenHeight = 720
 fairy = 255, 102, 204
@@ -87,20 +99,16 @@ def handleElement():
         
     #playing with mouse events
     if mouse[0]:
-        print('left click', event.pos)
+        print('left click', event)
     if mouse[1]:
         print('middle click', mouse)
     if mouse[2]:
-        print('right click', event)
-
-def attack():
-    if key[pygame.K_SPACE]:
-        bad.hp -= 3
-        print(bad.hp)
+        print('right click', event.pos)
 
 #creating character from class object
 man = player(565, 410, 64, 74, light)
 bad = baddie(670, 410, 64, 74, void, 3, 5, 15)
+#1 spot on x axis = 105px 1 spon on y axis = 75
 
 run = True
 
@@ -117,24 +125,66 @@ while run:
     mouse = pygame.mouse.get_pressed()
     
     #movement listeners
-    if keys[pygame.K_a] and man.x > man.vel:
-        man.x -= man.vel
-    if keys[pygame.K_d] and man.x < screenWidth - man.width - man.vel:
-        man.x += man.vel
-    if keys[pygame.K_w] and man.y > man.vel:
-        man.y -= man.vel
-    if keys[pygame.K_s] and man.y < screenHeight - man.height - man.vel:
-        man.y += man.vel
+    if player1turn == True:
+        if keys[pygame.K_a]: #and man.x > man.vel:
+            man.x -= 105
+            player1turn = False
+            player2turn = True
+        if keys[pygame.K_d]: #and man.x < screenWidth - man.width - man.vel:
+            man.x += 105
+            player1turn = False
+            player2turn = True
+        if keys[pygame.K_q]: #and man.y > man.vel:
+            man.y -= 79
+            man.x -= 53
+            player1turn = False
+            player2turn = True
+        if keys[pygame.K_c]: #and man.y < screenHeight - man.height - man.vel:
+            man.y += 79
+            man.x += 53
+            player1turn = False
+            player2turn = True
+        if keys[pygame.K_e]:
+            man.y -= 79
+            man.x += 53
+            player1turn = False
+            player2turn = True
+        if keys[pygame.K_z]:
+            man.y += 79
+            man.x -= 53
+            player1turn = False
+            player2turn = True
         
     #player2 / just pigybacking player1 movement at the moment
-    if keys[pygame.K_a] and bad.x > bad.vel:
-        bad.x -= bad.vel
-    if keys[pygame.K_d] and bad.x < screenWidth - bad.width - bad.vel:
-        bad.x += bad.vel
-    if keys[pygame.K_w] and bad.y > bad.vel:
-        bad.y -= bad.vel
-    if keys[pygame.K_s] and bad.y < screenHeight - bad.height - bad.vel:
-        bad.y += bad.vel
+    if player2turn == True:
+        if keys[pygame.K_f]: #and man.x > man.vel:
+            bad.x -= 105
+            player2turn = False
+            player1turn = True
+        if keys[pygame.K_h]: #and man.x < screenWidth - man.width - man.vel:
+            bad.x += 105
+            player2turn = False
+            player1turn = True
+        if keys[pygame.K_r]: #and man.y > man.vel:
+            bad.y -= 79
+            bad.x -= 53
+            player2turn = False
+            player1turn = True
+        if keys[pygame.K_n]: #and man.y < screenHeight - man.height - man.vel:
+            bad.y += 79
+            bad.x += 53
+            player2turn = False
+            player1turn = True
+        if keys[pygame.K_y]:
+            bad.y -= 79
+            bad.x += 53
+            player2turn = False
+            player1turn = True
+        if keys[pygame.K_v]:
+            bad.y += 79
+            bad.x -= 53
+            player2turn = False
+            player1turn = True
     
     handleElement()
     redrawGameWindow()
