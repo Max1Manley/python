@@ -1,9 +1,10 @@
 #IDEAS
-#downsize hexagons to make room for display
 #items/pickups/areas that provide new elemental powers and give advantages over certain enemies
 #fairy(pink) > dragon(gold) > light(white) > void(darkgrey) > psychic(purple) > fairy(pink) 
 #turn based? time based? real time?
 #high ground advantage?
+#blasted into space to destroy dark energy monsters that want to pump dark energy into our world to make our universe habitable for them
+#radiation meter as a time limit? but i don't really like time/move limits
 
 #turn this into an object somehow to track movement?
 #row0 = [0,1,2,3,4,5,6,7,8]
@@ -31,7 +32,7 @@ psychic = 204, 0, 204
 
 #setting window size and window title
 win = pygame.display.set_mode((screenWidth, screenHeight))
-pygame.display.set_caption("Element Dungeon")
+pygame.display.set_caption("Super Element Dungeon/Island")
 
 #used to help set image background
 bg = pygame.image.load('elementdungeontestcolored.png')
@@ -66,6 +67,12 @@ class baddie:
         self.attack = attack
         self.hp = hp
 
+font = pygame.font.SysFont(None, 25)
+
+def messageToScreen(msg,color):
+    screen_text = font.render(msg, True, color)
+    win.blit(screen_text, [50, screenHeight - 50])
+
 #redraws game window so there isn't a million of the same image, order matters
 def redrawGameWindow():
     #win.fill((0,0,0))
@@ -74,8 +81,7 @@ def redrawGameWindow():
     #pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
     pygame.draw.rect(win, (man.charElement), (man.x, man.y, man.width, man.height))
     pygame.draw.rect(win, (bad.charElement), (bad.x, bad.y, bad.width, bad.height))
-    #example of drawing a circle and a polygon
-    #pygame.draw.circle(win, (255, 0, 255), (190, 190), 30, 5)
+    messageToScreen("{X} [X] (X) {x} [x] (x)", (0,0,0))
     pygame.display.update()
 
 #function for changing player state
