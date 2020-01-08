@@ -81,7 +81,7 @@ def redrawGameWindow():
     #pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
     pygame.draw.rect(win, (man.charElement), (man.x, man.y, man.width, man.height))
     pygame.draw.rect(win, (bad.charElement), (bad.x, bad.y, bad.width, bad.height))
-    messageToScreen("{X} [X] (X) {x} [x] (x)", (0,0,0))
+    messageToScreen("[X]"*4, (0,0,0))
     pygame.display.update()
 
 #function for changing player state
