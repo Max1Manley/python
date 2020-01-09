@@ -14,6 +14,11 @@
 #row5 = [0,1,2,3,4,5,6,7,8]
 #row6 = [0,1,2,3,4,5,6,7]
 #row7 = [0,1,2,3,4,5,6,7,8]
+#JS example of what would be useful
+#a1 = {
+#    element: 'normal',
+#    neighbors: [a2, b1]
+#}
 
 
 import pygame
@@ -123,6 +128,15 @@ while run:
     #frame rate 27/s
     clock.tick(30)
     
+    #x and y can get off by a pixel with horizontal movement
+    if abs(man.x - bad.x) <= 106 and abs(man.y - bad.y) <= 79:
+        print('within striking range')
+        print(abs(man.x - bad.x))
+        print(abs(man.y - bad.y))
+    else:
+        print(abs(man.x - bad.x))
+        print(abs(man.y - bad.y))
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -133,11 +147,11 @@ while run:
     #movement listeners
     if player1turn == True:
         if keys[pygame.K_a]: #and man.x > man.vel:
-            man.x -= 105
+            man.x -= 106
             player1turn = False
             player2turn = True
         if keys[pygame.K_d]: #and man.x < screenWidth - man.width - man.vel:
-            man.x += 105
+            man.x += 106
             player1turn = False
             player2turn = True
         if keys[pygame.K_q]: #and man.y > man.vel:
