@@ -117,7 +117,7 @@ def handleElement():
         print('right click', event.pos)
 
 #creating character from class object
-man = player(565, 410, 64, 74, light)
+man = player(566, 410, 64, 74, light)
 bad = baddie(670, 410, 64, 74, void, 3, 5, 15)
 #1 spot on x axis = 105px 1 spon on y axis = 75
 
@@ -129,7 +129,7 @@ while run:
     clock.tick(30)
     
     #x and y can get off by a pixel with horizontal movement
-    if abs(man.x - bad.x) <= 106 and abs(man.y - bad.y) <= 79:
+    if abs(man.x - bad.x) <= 104 and abs(man.y - bad.y) <= 79:
         print('within striking range')
         print(abs(man.x - bad.x))
         print(abs(man.y - bad.y))
@@ -147,62 +147,62 @@ while run:
     #movement listeners
     if player1turn == True:
         if keys[pygame.K_a]: #and man.x > man.vel:
-            man.x -= 106
+            man.x -= 104
             player1turn = False
             player2turn = True
         if keys[pygame.K_d]: #and man.x < screenWidth - man.width - man.vel:
-            man.x += 106
+            man.x += 104
             player1turn = False
             player2turn = True
         if keys[pygame.K_q]: #and man.y > man.vel:
             man.y -= 79
-            man.x -= 53
+            man.x -= 52
             player1turn = False
             player2turn = True
         if keys[pygame.K_c]: #and man.y < screenHeight - man.height - man.vel:
             man.y += 79
-            man.x += 53
+            man.x += 52
             player1turn = False
             player2turn = True
         if keys[pygame.K_e]:
             man.y -= 79
-            man.x += 53
+            man.x += 52
             player1turn = False
             player2turn = True
         if keys[pygame.K_z]:
             man.y += 79
-            man.x -= 53
+            man.x -= 52
             player1turn = False
             player2turn = True
         
     #player2 / just pigybacking player1 movement at the moment
     if player2turn == True:
         if keys[pygame.K_f]: #and man.x > man.vel:
-            bad.x -= 105
+            bad.x -= 104
             player2turn = False
             player1turn = True
         if keys[pygame.K_h]: #and man.x < screenWidth - man.width - man.vel:
-            bad.x += 105
+            bad.x += 104
             player2turn = False
             player1turn = True
         if keys[pygame.K_r]: #and man.y > man.vel:
             bad.y -= 79
-            bad.x -= 53
+            bad.x -= 52
             player2turn = False
             player1turn = True
         if keys[pygame.K_n]: #and man.y < screenHeight - man.height - man.vel:
             bad.y += 79
-            bad.x += 53
+            bad.x += 52
             player2turn = False
             player1turn = True
         if keys[pygame.K_y]:
             bad.y -= 79
-            bad.x += 53
+            bad.x += 52
             player2turn = False
             player1turn = True
         if keys[pygame.K_v]:
             bad.y += 79
-            bad.x -= 53
+            bad.x -= 52
             player2turn = False
             player1turn = True
     
