@@ -86,7 +86,7 @@ def redrawGameWindow():
     #pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
     pygame.draw.rect(win, (man.charElement), (man.x, man.y, man.width, man.height))
     pygame.draw.rect(win, (bad.charElement), (bad.x, bad.y, bad.width, bad.height))
-    messageToScreen("[X]"*4, (0,0,0))
+    messageToScreen("[X]" + str(bad.hp), (0,0,0))
     pygame.display.update()
 
 #function for changing player state
@@ -174,6 +174,10 @@ while run:
             man.x -= 52
             player1turn = False
             player2turn = True
+            
+        #attack test
+        if keys[pygame.K_SPACE]:
+            bad.hp -= 3
         
     #player2 / just pigybacking player1 movement at the moment
     if player2turn == True:
