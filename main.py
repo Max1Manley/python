@@ -41,6 +41,8 @@ pygame.display.set_caption("Super Element Dungeon/Island")
 
 #used to help set image background
 bg = pygame.image.load('elementdungeontestcolored.png')
+bluechar = pygame.image.load('bluecharacter0.png')
+purplechar = pygame.image.load('purplecharacter0.png')
 
 #used to help set framerate
 clock = pygame.time.Clock()
@@ -72,6 +74,7 @@ class baddie:
         self.attack = attack
         self.hp = hp
 
+#setup for text display
 font = pygame.font.SysFont(None, 25)
 
 def messageToScreen(msg,color):
@@ -86,6 +89,9 @@ def redrawGameWindow():
     #pygame.draw.polygon(win,(100, 200, 200), ((50,100), (75, 75), (125, 75), (150, 100), (150,150), (125, 175), (75, 175), (50, 150)))
     pygame.draw.rect(win, (man.charElement), (man.x, man.y, man.width, man.height))
     pygame.draw.rect(win, (bad.charElement), (bad.x, bad.y, bad.width, bad.height))
+    
+    win.blit(bluechar, (man.x, man.y))
+    win.blit(purplechar, (bad.x, bad.y))
     messageToScreen("[X]" + str(bad.hp), (0,0,0))
     pygame.display.update()
 
@@ -117,8 +123,8 @@ def handleElement():
         print('right click', event.pos)
 
 #creating character from class object
-man = player(566, 410, 64, 74, light)
-bad = baddie(670, 410, 64, 74, void, 3, 5, 15)
+man = player(566, 420, 64, 74, light)
+bad = baddie(670, 420, 64, 74, void, 3, 5, 15)
 #1 spot on x axis = 105px 1 spon on y axis = 75
 
 run = True
