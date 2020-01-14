@@ -25,8 +25,7 @@ import pygame
 pygame.init()
 
 #some good old global variable for you
-player1turn = True
-player2turn = False
+turnCount = 0
 screenWidth = 1080
 screenHeight = 720
 fairy = 255, 102, 204
@@ -37,7 +36,7 @@ psychic = 204, 0, 204
 
 #setting window size and window title
 win = pygame.display.set_mode((screenWidth, screenHeight))
-pygame.display.set_caption("Super Element Dungeon/Island")
+pygame.display.set_caption("Super Element Galaxy")
 
 #used to help set image background
 bg = pygame.image.load('elementdungeontestcolored.png')
@@ -137,11 +136,8 @@ while run:
     #x and y can get off by a pixel with horizontal movement
     if abs(man.x - bad.x) <= 104 and abs(man.y - bad.y) <= 79:
         print('within striking range')
-        print(abs(man.x - bad.x))
-        print(abs(man.y - bad.y))
     else:
-        print(abs(man.x - bad.x))
-        print(abs(man.y - bad.y))
+        print('outside striking range')
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -151,70 +147,58 @@ while run:
     mouse = pygame.mouse.get_pressed()
     
     #movement listeners
-    if player1turn == True:
+    if turnCount == 0:
         if keys[pygame.K_a]: #and man.x > man.vel:
             man.x -= 104
-            player1turn = False
-            player2turn = True
+            turnCount += 1
         if keys[pygame.K_d]: #and man.x < screenWidth - man.width - man.vel:
             man.x += 104
-            player1turn = False
-            player2turn = True
+            turnCount += 1
         if keys[pygame.K_q]: #and man.y > man.vel:
             man.y -= 79
             man.x -= 52
-            player1turn = False
-            player2turn = True
+            turnCount += 1
         if keys[pygame.K_c]: #and man.y < screenHeight - man.height - man.vel:
             man.y += 79
             man.x += 52
-            player1turn = False
-            player2turn = True
+            turnCount += 1
         if keys[pygame.K_e]:
             man.y -= 79
             man.x += 52
-            player1turn = False
-            player2turn = True
+            turnCount += 1
         if keys[pygame.K_z]:
             man.y += 79
             man.x -= 52
-            player1turn = False
-            player2turn = True
+            turnCount += 1
             
         #attack test
         if keys[pygame.K_SPACE]:
             bad.hp -= 3
         
     #player2 / just pigybacking player1 movement at the moment
-    if player2turn == True:
+    if turnCount == 1:
         if keys[pygame.K_f]: #and man.x > man.vel:
             bad.x -= 104
-            player2turn = False
-            player1turn = True
+            turnCount = 0
         if keys[pygame.K_h]: #and man.x < screenWidth - man.width - man.vel:
             bad.x += 104
-            player2turn = False
-            player1turn = True
+            turnCount = 0
         if keys[pygame.K_r]: #and man.y > man.vel:
             bad.y -= 79
             bad.x -= 52
-            player2turn = False
-            player1turn = True
+            turnCount = 0
         if keys[pygame.K_n]: #and man.y < screenHeight - man.height - man.vel:
             bad.y += 79
             bad.x += 52
-            player2turn = False
-            player1turn = True
+            turnCount = 0
         if keys[pygame.K_y]:
             bad.y -= 79
             bad.x += 52
-            player2turn = False
-            player1turn = True
+            turnCount = 0
         if keys[pygame.K_v]:
             bad.y += 79
             bad.x -= 52
-            player2turn = False
-            player1turn = True
+            turnCount = 0
     
     handleElement()
     redrawGameWindow()
