@@ -76,9 +76,9 @@ class baddie:
 #setup for text display
 font = pygame.font.SysFont(None, 25)
 
-def messageToScreen(msg,color):
+def messageToScreen(msg,color,x,y):
     screen_text = font.render(msg, True, color)
-    win.blit(screen_text, [50, screenHeight - 50])
+    win.blit(screen_text, [x, y])
 
 #redraws game window so there isn't a million of the same image, order matters
 def redrawGameWindow():
@@ -91,7 +91,9 @@ def redrawGameWindow():
     
     win.blit(bluechar, (man.x, man.y))
     win.blit(purplechar, (bad.x, bad.y))
-    messageToScreen("[X]" + str(bad.hp), (0,0,0))
+    messageToScreen("[X]" + str(bad.hp), (0,0,0), 50, screenHeight - 100)
+    messageToScreen('BlueCharacter Element:' + str(man.charElement), (0,0,0,), 50, screenHeight - 75)
+    
     pygame.display.update()
 
 #function for changing player state
