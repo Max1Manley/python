@@ -38,7 +38,7 @@ psychic = 204, 0, 204
 win = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Super Element Galaxy")
 
-#used to help set image background
+#load images and give variable names
 bg = pygame.image.load('elementdungeontestcolored.png')
 bluechar = pygame.image.load('bluecharacter0.png')
 purplechar = pygame.image.load('purplecharacter0.png')
@@ -48,7 +48,7 @@ clock = pygame.time.Clock()
 
 #player class
 class player:
-#character dimentions and velocity
+#character dimentions
     def __init__(self, x, y, width, height, charElement):
         self.x = x
         self.y = y
@@ -89,8 +89,11 @@ def redrawGameWindow():
     pygame.draw.rect(win, (man.charElement), (man.x, man.y, man.width, man.height))
     pygame.draw.rect(win, (bad.charElement), (bad.x, bad.y, bad.width, bad.height))
     
+    #render character sprites and position them
     win.blit(bluechar, (man.x, man.y))
     win.blit(purplechar, (bad.x, bad.y))
+    
+    #on screen text
     messageToScreen("[X]" + str(bad.hp), (0,0,0), 50, screenHeight - 100)
     messageToScreen('BlueCharacter Element:' + str(man.charElement), (0,0,0,), 50, screenHeight - 75)
     
@@ -126,7 +129,6 @@ def handleElement():
 #creating character from class object
 man = player(566, 420, 64, 74, light)
 bad = baddie(670, 420, 64, 74, void, 3, 5, 15)
-#1 spot on x axis = 105px 1 spon on y axis = 75
 
 run = True
 
