@@ -22,7 +22,11 @@
 
 
 import pygame
+import random
 pygame.init()
+
+dice = random.randint(0,5)
+print(dice)
 
 #some good old global variable for you
 turnCount = 0
@@ -140,6 +144,7 @@ while run:
     #x and y can get off by a pixel with horizontal movement
     if abs(man.x - bad.x) <= 104 and abs(man.y - bad.y) <= 79:
         print('within striking range')
+        print(dice)
     else:
         print('outside striking range')
     
