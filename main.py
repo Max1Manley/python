@@ -149,7 +149,7 @@ while run:
         print('within striking range')
         print(dice)
     else:
-        print('outside striking range')
+        print('outside striking range', man.x, man.y)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -159,7 +159,8 @@ while run:
     mouse = pygame.mouse.get_pressed()
     
     #movement listeners
-    if turnCount == 0:
+    #this doesn't work exactly right
+    if turnCount == 0 and man.x >= 98 and man.x <= 930 and man.y >= 25 and man.y <= 499:
         if keys[pygame.K_a]: #and man.x > man.vel:
             man.x -= 104
             turnCount += 1
