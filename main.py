@@ -1,10 +1,13 @@
 #IDEAS
 #items/pickups/areas that provide new elemental powers and give advantages over certain enemies
+#    cool down on changing elements?
 #fairy(pink) > dragon(gold) > light(white) > void(darkgrey) > psychic(purple) > fairy(pink) 
-#turn based? time based? real time?
-#high ground advantage?
-#blasted into space to destroy dark energy monsters that want to pump dark energy into our world to make our universe habitable for them
-#radiation meter as a time limit? but i don't really like time/move limits
+#turn based? time based? real time? --- leaning toward turn based, but time based is interesting as well
+#co-op, controlling two players weather it's single or couch co-op
+#high ground advantage? --- probably not initially, but interesting idea
+#blasted into space to destroy dark energy creatures that want to pump dark energy into our world to make our universe habitable for them
+#radiation meter as a time limit? but i don't really like time/move limits --- could possibly be used sparingly
+#how to target a certain character with an attack and tell that it's within striking distance?
 
 #turn this into an object somehow to track movement?
 #row0 = [0,1,2,3,4,5,6,7,8]
