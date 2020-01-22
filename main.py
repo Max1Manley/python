@@ -8,6 +8,7 @@
 #blasted into space to destroy dark energy creatures that want to pump dark energy into our world to make our universe habitable for them
 #radiation meter as a time limit? but i don't really like time/move limits --- could possibly be used sparingly
 #how to target a certain character with an attack and tell that it's within striking distance?
+#    use to move and attack, keys to change element
 
 #turn this into an object somehow to track movement?
 #row0 = [0,1,2,3,4,5,6,7,8]
@@ -160,7 +161,7 @@ while run:
     
     #movement listeners
     #this doesn't work exactly right
-    if turnCount == 0 and man.x >= 98 and man.x <= 930 and man.y >= 25 and man.y <= 499:
+    if turnCount == 0:
         if keys[pygame.K_a]: #and man.x > man.vel:
             man.x -= 104
             turnCount += 1
