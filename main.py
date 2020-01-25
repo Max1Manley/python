@@ -8,7 +8,7 @@
 #blasted into space to destroy dark energy creatures that want to pump dark energy into our world to make our universe habitable for them
 #radiation meter as a time limit? but i don't really like time/move limits --- could possibly be used sparingly
 #how to target a certain character with an attack and tell that it's within striking distance?
-#    use to move and  attack, keys to change element
+#    use to move and attack, keys to change element
 
 #turn this into an object somehow to track movement?
 #row0 = [0,1,2,3,4,5,6,7,8]
