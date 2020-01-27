@@ -10,6 +10,8 @@
 #how to target a certain character with an attack and tell that it's within striking distance?
 #    use to move and attack, keys to change element
 
+#i mean what the hell am i even doing
+
 #turn this into an object somehow to track movement?
 #row0 = [0,1,2,3,4,5,6,7,8]
 #row1 = [0,1,2,3,4,5,6,7]
