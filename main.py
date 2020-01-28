@@ -164,17 +164,17 @@ while run:
     #movement listeners
     #this doesn't work exactly right
     if turnCount == 0:
-        if keys[pygame.K_a]: #and man.x > man.vel:
+        if keys[pygame.K_a]: 
             man.x -= 104
             turnCount += 1
-        if keys[pygame.K_d]: #and man.x < screenWidth - man.width - man.vel:
+        if keys[pygame.K_d]: 
             man.x += 104
             turnCount += 1
-        if keys[pygame.K_q]: #and man.y > man.vel:
+        if keys[pygame.K_q]: 
             man.y -= 79
             man.x -= 52
             turnCount += 1
-        if keys[pygame.K_c]: #and man.y < screenHeight - man.height - man.vel:
+        if keys[pygame.K_c]: 
             man.y += 79
             man.x += 52
             turnCount += 1
