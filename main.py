@@ -193,17 +193,17 @@ while run:
         
     #player2 / just pigybacking player1 movement at the moment
     if turnCount == 1:
-        if keys[pygame.K_f]: #and man.x > man.vel:
+        if keys[pygame.K_f]: 
             bad.x -= 104
             turnCount = 0
-        if keys[pygame.K_h]: #and man.x < screenWidth - man.width - man.vel:
+        if keys[pygame.K_h]: 
             bad.x += 104
             turnCount = 0
-        if keys[pygame.K_r]: #and man.y > man.vel:
+        if keys[pygame.K_r]: 
             bad.y -= 79
             bad.x -= 52
             turnCount = 0
-        if keys[pygame.K_n]: #and man.y < screenHeight - man.height - man.vel:
+        if keys[pygame.K_n]: 
             bad.y += 79
             bad.x += 52
             turnCount = 0
